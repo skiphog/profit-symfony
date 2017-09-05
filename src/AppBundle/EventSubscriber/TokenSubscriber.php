@@ -11,6 +11,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class TokenSubscriber implements EventSubscriberInterface
 {
 
+    /**
+     * Массив ['name' => 'admin', 'pass' => '123456']
+     * Инжектится при создании объекта из конфига \app\config\config.yml => auth
+     *
+     * @var array
+     */
     protected $auth;
 
     public function __construct($auth)

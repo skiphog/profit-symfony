@@ -8,8 +8,8 @@ imports:
 parameters:
     locale: en
     auth:
-        name: admin
-        pass: 123456
+        name: 'admin'
+        pass: '123456'
 
 framework:
     #esi: ~
