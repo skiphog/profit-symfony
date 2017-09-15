@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Новости!!!{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center">Все новости</h1>
+        {% if news %}
+            <div class="list-group">
+                {% for article in news %}
+                    <article>
+                        <h2>{{ article.title }}</h2>
+                        <p>{{ article.content }}</p>
+                    </article>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
