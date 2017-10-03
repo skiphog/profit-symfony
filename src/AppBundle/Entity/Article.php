@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\NewsRepository")
  * @ORM\Table(name="news")
  */
 class Article
@@ -38,10 +38,21 @@ class Article
     private $updated_at;
 
     /**
+     * @ORM\Column(type="boolean", options={"default" : true})
+     */
+    private $active;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Author", inversedBy="articles")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      */
     private $author;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Rubric", inversedBy="articles")
+     * @ORM\JoinColumn(name="rubric_id", referencedColumnName="id")
+     */
+    private $rubric;
 
     public function getId()
     {
@@ -91,5 +102,31 @@ class Article
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    public function getRubric()
+    {
+        return $this->rubric;
+    }
+
+    public function siRedacted(): bool
+    {
+        return null !== $this->created_at;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param mixed $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
     }
 }
