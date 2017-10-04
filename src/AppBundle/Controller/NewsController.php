@@ -22,4 +22,17 @@ class NewsController extends Controller
         return $this->render('news/index.html.twig', compact('news'));
     }
 
+    /**
+     * @Route("/news-rubrics", name="news-rubrics")
+     * @throws \LogicException
+     */
+    public function newsRubricsAction()
+    {
+        $news = $this->getDoctrine()
+            ->getRepository(Article::class)
+            ->getNewsByRubrics();
+
+        return $this->render('news/news.html.twig', compact('news'));
+    }
+
 }

@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Новости из БД{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center">Новости за текущую неделю</h1>
+        {% if news %}
+            <div class="content">
+                {% for date, rubrics in news %}
+                    <div>
+                        <h2>In : {{ date }}</h2>
+                        {% for title,articles in rubrics %}
+                            <div>
+                                <h3>Rubric: {{ title }}</h3>
+                                {% for article in articles %}
+                                    <h4>{{ article.title }}</h4>
+                                    <div>{{ article.content }}</div>
+                                    <p>Created: {{ article.created|date }}</p>
+                                    <p>Author: {{ article.author.name }}</p>
+
+                                    {% if article.isRedacted %}
+                                        <h2>Обновленно</h2>
+                                    {% endif %}
+
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

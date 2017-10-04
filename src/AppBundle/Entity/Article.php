@@ -29,6 +29,7 @@ class Article
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
      */
     private $created_at;
 
@@ -79,6 +80,9 @@ class Article
         $this->content = $content;
     }
 
+    /**
+     * @return \DateTime
+     */
     public function getCreated()
     {
         return $this->created_at;
@@ -104,14 +108,17 @@ class Article
         return $this->author;
     }
 
+    /**
+     * @return Rubric
+     */
     public function getRubric()
     {
         return $this->rubric;
     }
 
-    public function siRedacted(): bool
+    public function isRedacted(): bool
     {
-        return null !== $this->created_at;
+        return null !== $this->updated_at;
     }
 
     /**
