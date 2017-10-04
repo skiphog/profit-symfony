@@ -36,5 +36,4 @@ class NewsController extends Controller
 
         return $this->render('news/news.html.twig', compact('news'));
     }
-
 }

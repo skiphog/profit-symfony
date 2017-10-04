@@ -26,7 +26,7 @@ class NewsRepository extends EntityRepository
      *
      * @return array
      */
-    public function getNewsByRubrics()
+    public function getNewsByRubrics(): array
     {
         $date = new \DateTime('monday this week');
 
@@ -70,7 +70,7 @@ class NewsRepository extends EntityRepository
      *
      * @return array
      */
-    private function toSpecialArray(Query $query)
+    private function toSpecialArray(Query $query): array
     {
         $tmp = [];
 
