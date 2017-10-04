@@ -42,6 +42,14 @@ class NewsRepository extends EntityRepository
         return $this->toSpecialArray($query);
     }
 
+    /**
+     * Списание в архив всех новостей из выбранных рубрик, которые были опубликованы ранее указанной даты.
+     *
+     * @param string $date
+     * @param array $rubrics
+     *
+     * @return mixed
+     */
     public function setToArchive($date, $rubrics)
     {
         $query = $this->createQueryBuilder('n')

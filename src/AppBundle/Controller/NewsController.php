@@ -23,6 +23,8 @@ class NewsController extends Controller
     }
 
     /**
+     * Получение списка "неархивных" новостей за текущую неделю, в разбивке по дням недели и по рубрикам.
+     *
      * @Route("/news-rubrics", name="news-rubrics")
      * @throws \LogicException
      */
